@@ -24,6 +24,25 @@ public class ElementPage extends PageObject {
 
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
     public WebElement urunEklendiMesaji;
+
+    @FindBy(xpath = "(//button[@type='button'])[10]")
+    public WebElement addTooCardButton;
+
+    @FindBy(css = "#cart-total")
+    public WebElement controlAddCart;
+
+
+    @FindBy(xpath = "(//a[text()='iPhone'])[1]")
+    public WebElement controlProduct;
+
+    @FindBy(xpath = "//i[@class='fa fa-times']")
+    public WebElement clickForRemove;
+
+    @FindBy(css = "#cart-total")
+    public WebElement controlEmptyCart;
+
+    @FindBy(xpath = "//p[@class='text-center']")
+    public WebElement controlEmptyCartMessage;
 }
 
 

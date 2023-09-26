@@ -1,6 +1,7 @@
 package homeWorkTestAutomation;
 
 import Pages.ElementPage;
+import Pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -62,13 +63,39 @@ public class TestDuzenleme {
         driver.get(ConfigReader.getProperties("url"));
         Thread.sleep(2000);
 
+        ElementPage elementPage=new ElementPage();
+        PageObject pageObject=new PageObject();
+        pageObject.scrollAndClick(elementPage.addTooCardButton);
+        Thread.sleep(4000);
 
 
+        elementPage.controlAddCart.click();
+        String actualNumber=elementPage.controlAddCart.getText();
+        System.out.println("actualNumber = " + actualNumber);
+        String expectedNumber="1 item(s) - $123.20";
+        Assert.assertEquals(actualNumber,expectedNumber,"yanlis urun miktari!!");
+        Thread.sleep(2000);
 
+        elementPage.controlProduct.getText();
+        String actualMessage=elementPage.controlProduct.getText();
+        System.out.println("actualMessage = " + actualMessage);
+        String expectedMessage="iPhone";
+        Assert.assertEquals(actualMessage,expectedMessage,"Yanlis urun mesaji!!");
+        Thread.sleep(2000);
 
+        elementPage.clickForRemove.click();
+        Thread.sleep(2000);
+
+        elementPage.controlEmptyCart.click();
+        Thread.sleep(1000);
+
+        elementPage.controlEmptyCartMessage.getText();
+        String actualEmptyCartMessage=elementPage.controlEmptyCartMessage.getText();
+        System.out.println("actualEmptyCartMessage = " + actualEmptyCartMessage);
+        String expectedEmptyCartMessage="Your shopping cart is empty!";
+        Assert.assertEquals(actualEmptyCartMessage,expectedEmptyCartMessage,"Yanlis EmptyCart mesaji!!");
+        Thread.sleep(2000);
 
         Driver.closeDriver();
-
-
     }
 }
